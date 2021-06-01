@@ -150,8 +150,11 @@ public class Lab14 implements GLEventListener {
             
             //задний торец
             gl.glBegin(mode);
+                gl.glColor3d(Math.abs(Math.cos(angle)), Math.abs(Math.cos(angle)), Math.abs(Math.cos(angle)));
                 gl.glVertex3d(inner_x1, inner_y1,0);
                 gl.glVertex3d(inner_x1, inner_y1,height);
+                gl.glColor3d(Math.abs(Math.cos(angle+da)), Math.abs(Math.cos(angle+da)), Math.abs(Math.cos(angle+da)));
+
                 gl.glVertex3d(inner_x2, inner_y2,height);
                 gl.glVertex3d(inner_x2, inner_y2,0);
             gl.glEnd();
@@ -224,6 +227,8 @@ public class Lab14 implements GLEventListener {
             gl.glBegin(mode);
                 gl.glVertex3d(inner_x1, inner_y1,0);
                 gl.glVertex3d(inner_x1, inner_y1,height);
+                gl.glColor3d(Math.abs(Math.cos(angle+da)), Math.abs(Math.cos(angle+da)), Math.abs(Math.cos(angle+da)));
+
                 gl.glVertex3d(inner_x2, inner_y2,height);
                 gl.glVertex3d(inner_x2, inner_y2,0);
             gl.glEnd();
@@ -397,7 +402,7 @@ public class Lab14 implements GLEventListener {
         if (angle_rotation_down < Math.toDegrees(angle) && Math.toDegrees(angle) < angle_rotation_up){
                 gl.glEnable(GL.GL_LINE_STIPPLE);
                 gl.glLineWidth(1);
-                gl.glLineStipple(2, (short)0xAAAA);
+                gl.glLineStipple(1, (short)0xFF00);
             }
             else {
                 gl.glEnable(GL.GL_LINE_STIPPLE);
@@ -536,8 +541,9 @@ public class Lab14 implements GLEventListener {
 
         gl.glClearColor(0.5f, 0.0f, 0, 0);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
-        
         drawCentralLine(gl);
+        gl.glLineWidth(2);
+
         upperGear(gl, 0.5, 0.6, 0.1, 9);
 
         
