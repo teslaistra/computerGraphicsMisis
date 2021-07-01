@@ -7,7 +7,13 @@
 package org.yourorghere;
 
 import com.sun.opengl.util.Animator;
+import java.awt.Checkbox;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.logging.Level;
@@ -22,6 +28,8 @@ import javax.swing.JSlider;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -31,15 +39,19 @@ import javax.swing.WindowConstants;
 public class Lab26 extends JFrame {
 
     private Animator animator;
-
+    
+    GLRenderer renderer = new GLRenderer(); 
+    
     /** Creates new form MainFrame */
     public Lab26() {
         initComponents();
-        setTitle("Simple JOGL Application");
+        setTitle("Шестеренка");
 
-        panel.addGLEventListener(new GLRenderer());
+        panel.addGLEventListener(renderer);
         animator = new Animator(panel);
-
+        
+        setSize(700, 700);
+        panel.setSize(700, 700);
         this.addWindowListener(new WindowAdapter() {
 
             @Override
@@ -63,8 +75,8 @@ public class Lab26 extends JFrame {
         if(!show)
             animator.stop();
         super.setVisible(show);
-        if(!show)
-            animator.start();
+
+        animator.start();
     }
 
     /** This method is called from within the constructor to
@@ -76,22 +88,92 @@ public class Lab26 extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSlider2 = new JSlider();
         JLabel label = new JLabel();
         panel = new GLJPanel(createGLCapabilites());
         jSlider1 = new JSlider();
+        jSlider3 = new JSlider();
+        jSlider5 = new JSlider();
+        jSlider6 = new JSlider();
+        jSlider7 = new JSlider();
+        checkbox1 = new Checkbox();
+        jSlider4 = new JSlider();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(400, 800));
 
         label.setText("Below you see a GLJPanel");
+
+        panel.setPreferredSize(new Dimension(400, 400));
 
         GroupLayout panelLayout = new GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(panelLayout.createParallelGroup(Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGap(0, 434, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(panelLayout.createParallelGroup(Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 503, Short.MAX_VALUE)
         );
+
+        jSlider1.setMaximum(360);
+        jSlider1.setValue(0);
+        jSlider1.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
+
+        jSlider3.setMaximum(360);
+        jSlider3.setValue(0);
+        jSlider3.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent evt) {
+                jSlider3StateChanged(evt);
+            }
+        });
+
+        jSlider5.setValue(30);
+        jSlider5.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent evt) {
+                jSlider5StateChanged(evt);
+            }
+        });
+
+        jSlider6.setValue(20);
+        jSlider6.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent evt) {
+                jSlider6StateChanged(evt);
+            }
+        });
+
+        jSlider7.setToolTipText("");
+        jSlider7.setValue(10);
+        jSlider7.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent evt) {
+                jSlider7StateChanged(evt);
+            }
+        });
+
+        checkbox1.setLabel("Отрисовка полигонами");
+        checkbox1.setState(true);
+        checkbox1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                checkbox1MouseClicked(evt);
+            }
+        });
+        checkbox1.addComponentListener(new ComponentAdapter() {
+            public void componentShown(ComponentEvent evt) {
+                checkbox1ComponentShown(evt);
+            }
+        });
+
+        jSlider4.setMaximum(360);
+        jSlider4.setOrientation(JSlider.VERTICAL);
+        jSlider4.setValue(0);
+        jSlider4.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent evt) {
+                jSlider4StateChanged(evt);
+            }
+        });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,27 +181,95 @@ public class Lab26 extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(Alignment.LEADING)
-                    .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panel, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(ComponentPlacement.RELATED)
+                        .addComponent(jSlider4, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSlider7, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSlider3, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                            .addComponent(jSlider6, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
                             .addComponent(label)
-                            .addComponent(jSlider1, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(checkbox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSlider5, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSlider1, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(layout.createParallelGroup(Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label)
                 .addPreferredGap(ComponentPlacement.RELATED)
-                .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jSlider1, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGroup(layout.createParallelGroup(Alignment.TRAILING)
+                    .addComponent(panel, GroupLayout.PREFERRED_SIZE, 503, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSlider4, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSlider7, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(ComponentPlacement.RELATED)
+                        .addComponent(jSlider5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(ComponentPlacement.RELATED)
+                        .addComponent(jSlider6, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(checkbox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSlider3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(ComponentPlacement.RELATED)
+                        .addComponent(jSlider1, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkbox1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_checkbox1MouseClicked
+        // TODO add your handling code here:
+        renderer.type = checkbox1.getState();
+    }//GEN-LAST:event_checkbox1MouseClicked
+
+    private void jSlider7StateChanged(ChangeEvent evt) {//GEN-FIRST:event_jSlider7StateChanged
+        renderer.inner = jSlider7.getValue()/100.0;
+    }//GEN-LAST:event_jSlider7StateChanged
+
+    private void jSlider5StateChanged(ChangeEvent evt) {//GEN-FIRST:event_jSlider5StateChanged
+        // TODO add your handling code here:
+        renderer.outer = jSlider5.getValue()/100.0;
+    }//GEN-LAST:event_jSlider5StateChanged
+
+    private void jSlider6StateChanged(ChangeEvent evt) {//GEN-FIRST:event_jSlider6StateChanged
+        // TODO add your handling code here:
+        renderer.teeth_len = jSlider6.getValue()/100.0;
+    }//GEN-LAST:event_jSlider6StateChanged
+
+    private void jSlider4StateChanged(ChangeEvent evt) {//GEN-FIRST:event_jSlider4StateChanged
+        // TODO add your handling code here:
+        renderer.x_r = jSlider4.getValue();
+        
+    }//GEN-LAST:event_jSlider4StateChanged
+
+    private void jSlider3StateChanged(ChangeEvent evt) {//GEN-FIRST:event_jSlider3StateChanged
+        // TODO add your handling code here:
+        renderer.y_r = jSlider3.getValue();
+    }//GEN-LAST:event_jSlider3StateChanged
+
+    private void jSlider1StateChanged(ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+        // TODO add your handling code here:
+                renderer.z_r = jSlider1.getValue();
+
+    }//GEN-LAST:event_jSlider1StateChanged
+
+    private void checkbox1ComponentShown(ComponentEvent evt) {//GEN-FIRST:event_checkbox1ComponentShown
+        // TODO add your handling code here:
+        renderer.type = checkbox1.getState();
+    }//GEN-LAST:event_checkbox1ComponentShown
 
     /**
      * Called from within initComponents().
@@ -161,7 +311,14 @@ public class Lab26 extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Checkbox checkbox1;
     private JSlider jSlider1;
+    private JSlider jSlider2;
+    private JSlider jSlider3;
+    private JSlider jSlider4;
+    private JSlider jSlider5;
+    private JSlider jSlider6;
+    private JSlider jSlider7;
     private GLJPanel panel;
     // End of variables declaration//GEN-END:variables
 

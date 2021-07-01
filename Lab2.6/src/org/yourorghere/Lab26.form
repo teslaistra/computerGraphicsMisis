@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.6" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JSlider" name="jSlider2">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[400, 800]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -26,16 +33,31 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panel" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="panel" min="-2" pref="434" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSlider4" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jSlider7" min="-2" pref="145" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jSlider3" min="-2" pref="145" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jSlider6" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                           <Component id="label" min="-2" max="-2" attributes="0"/>
-                          <Component id="jSlider1" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="checkbox1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jSlider5" min="-2" pref="145" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jSlider1" min="-2" pref="145" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,10 +67,29 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panel" max="32767" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jSlider1" min="-2" pref="20" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="panel" min="-2" pref="503" max="-2" attributes="0"/>
+                  <Component id="jSlider4" min="-2" pref="178" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jSlider7" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSlider5" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSlider6" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="checkbox1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jSlider3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSlider1" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,6 +105,11 @@
       </AuxValues>
     </Component>
     <Container class="javax.media.opengl.GLJPanel" name="panel">
+      <Properties>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[400, 400]"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GLJPanel(createGLCapabilites())"/>
       </AuxValues>
@@ -71,17 +117,78 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="380" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="434" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="206" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="503" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
     </Container>
     <Component class="javax.swing.JSlider" name="jSlider1">
+      <Properties>
+        <Property name="maximum" type="int" value="360"/>
+        <Property name="value" type="int" value="0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider1StateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider3">
+      <Properties>
+        <Property name="maximum" type="int" value="360"/>
+        <Property name="value" type="int" value="0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider3StateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider5">
+      <Properties>
+        <Property name="value" type="int" value="30"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider5StateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider6">
+      <Properties>
+        <Property name="value" type="int" value="20"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider6StateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider7">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="value" type="int" value="10"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider7StateChanged"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Checkbox" name="checkbox1">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="&#x41e;&#x442;&#x440;&#x438;&#x441;&#x43e;&#x432;&#x43a;&#x430; &#x43f;&#x43e;&#x43b;&#x438;&#x433;&#x43e;&#x43d;&#x430;&#x43c;&#x438;"/>
+        <Property name="state" type="boolean" value="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="checkbox1MouseClicked"/>
+        <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="checkbox1ComponentShown"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider4">
+      <Properties>
+        <Property name="maximum" type="int" value="360"/>
+        <Property name="orientation" type="int" value="1"/>
+        <Property name="value" type="int" value="0"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider4StateChanged"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -52,6 +52,7 @@ public class Lab24 implements GLEventListener {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         animator.start();
+       // animator.stop();
     }
 
     public void init(GLAutoDrawable drawable) {
@@ -72,113 +73,45 @@ public class Lab24 implements GLEventListener {
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
         GL gl = drawable.getGL();
     }
-    public void coord(GL gl){
-              
-        // Reset the current matrix to the "identity"
-        gl.glLoadIdentity();
-
-
-        // Move the "drawing cursor" around
- gl.glRotatef(45, 1, 0, 0);
-       gl.glRotatef(45, 0, 0, 1);
-        // Drawing Using Triangles
-        gl.glBegin(GL.GL_LINES);
-            gl.glColor3f(0.0f, 1.0f, 0);    // Set the current drawing color to red
-            gl.glVertex3f(-0.8f, 0.0f, 0.0f);   // Top
-            gl.glVertex3f(0.8f, 0.0f, 0.0f);
-            
-            gl.glColor3f(1.0f, 0.0f, 0.0f);    // Set the current drawing color to red
-            gl.glVertex3f(0, -0.8f, 0.0f);   // Top
-            gl.glVertex3f(0, 0.8f, 0.0f); // Bottom Left
-            
-            gl.glColor3f(0.0f,0, 1.0f);    // Set the current drawing color to red
-            gl.glVertex3f(0,0 , -0.8f);   // Top
-            gl.glVertex3f(0, 0, 0.8f); // Bottom Left
-        // Finished Drawing The Triangle
-        gl.glEnd();
-        double alpha = 0, R = 0.025, x, y;
-        int n = 16;
-        gl.glBegin(GL.GL_TRIANGLE_FAN);
-            gl.glColor3f(0, 0, 1.0f);
-            gl.glVertex3d(0, 0, -0.8);
-            for(int i=0;i<=n; i++){
-                alpha = (float)(i*2*Math.PI/n);
-                x = (float) (R*Math.cos(alpha));
-                y = (float) (R*Math.sin(alpha));
-                gl.glColor3d(0, 0, Math.abs(Math.cos(alpha)));
-                gl.glVertex3d(x, y, -0.7);
-            }
-        gl.glEnd();
-        
-        gl.glBegin(GL.GL_TRIANGLE_FAN);
-            gl.glColor3f(1, 0, 0.0f);
-            gl.glVertex3d(0, -0.8, 0);
-            for(int i=0;i<=n; i++){
-                alpha = (float)(i*2*Math.PI/n);
-                x = (float) (R*Math.cos(alpha));
-                y = (float) (R*Math.sin(alpha));
-                gl.glColor3d(Math.abs(Math.cos(alpha)), 0, 0);
-                gl.glVertex3d(x, -0.7, y);
-            }
-        gl.glEnd();
-        
-        gl.glBegin(GL.GL_TRIANGLE_FAN);
-            gl.glColor3f(0, 1, 0.0f);
-            gl.glVertex3d(-0.8, 0, 0);
-            for(int i=0;i<=n; i++){
-                alpha = (float)(i*2*Math.PI/n);
-                x = (float) (R*Math.cos(alpha));
-                y = (float) (R*Math.sin(alpha));
-                gl.glColor3d(0, Math.abs(Math.cos(alpha)), 0);
-                gl.glVertex3d(-0.7, x, y);
-            }
-        gl.glEnd();
-               // gl.glLoadIdentity();
-
-    }
+    
+    
+//    public void box(GL gl, GLUquadric q, double width, double lenght, double height){
+//        gl.glColor3f(1f,0f,0f); 
+//        gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_LINE);
+//        gl.glLineWidth(10);
+//        glu.gluCylinder(q, width, lenght, height,4,1);
+//        glu.gluDisk(q, 0, width, 4, 1);
+//        
+//        gl.glTranslated(0, 0, height);
+//        glu.gluDisk(q, 0, width, 4, 1);
+//        
+//        gl.glTranslated(0, 0, -height);
+//      
+//        gl.glColor3f(1f,1f,1f);
+//        gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_FILL);
+//        
+//        glu.gluCylinder(q, width, lenght, height,4,1);
+//        glu.gluDisk(q, 0, width, 4, 1);
+//        
+//        gl.glTranslated(0, 0, height);
+//        glu.gluDisk(q, 0, width, 4, 1);    
+//    }
     public void display(GLAutoDrawable drawable) {
-      GL gl = drawable.getGL();
-      gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
-      gl.glEnable(gl.GL_DEPTH_TEST);
-      coord(gl);
-      gl.glColor3f(1f,0f,0f); //applying red
-                 gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_LINE);
+        GL gl = drawable.getGL();
+        gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
+        gl.glEnable(GL.GL_DEPTH_TEST);
+        //gl.glColor3f(1f,0f,0f); 
+        gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL.GL_LINE);
+        
+        GLUquadric q; 
+        q = glu.gluNewQuadric();
+        gl.glRotatef(-120, 1, 0, 0);
+        glu.gluCylinder(q, 0.5f, 0.5f, 0.8f, 10, 1);
 
-      GLUquadric q; 
-      q = glu.gluNewQuadric();
-      
-      //gl.glLoadIdentity();       // Reset The View    
-      gl.glTranslatef(0, 0.5f, 0);
-      gl.glRotatef(45, 0, 0, 1);
+    // gl.glRotatef(120, 0, 0, 1);
+//      
+        //glu.gluDisk(q, 0.-25f, 0.025f, 1, 4);
 
-      glu.gluDisk(q, 0, 0.05f, 4, 0);
-      glu.gluCylinder(q, 0.05f, 0.05f, -0.25f,4,1);
-      gl.glTranslatef(0.25f, 0, 0);
-      glu.gluDisk(q, 0, 0.05f, 4, 0);
-      gl.glTranslatef(-0.25f, 0, 0);
-
-     
-      gl.glRotatef(-45, 0, 0, 1);
-      gl.glTranslatef(0, -0.5f, 0);
-
-      gl.glTranslatef(0, -0.5f, 0);
-      gl.glRotatef(45, 0, 0, 1);
-      gl.glColor3f(1f,1f,0f); //applying red
-
-      //rpoly += 0.5f;  //assigning the angle 
-      glu.gluDisk(q, 0, 0.05f, 4, 0);
-      glu.gluCylinder(q, 0.05f, 0.05f, -0.25f,4,1);
-      gl.glTranslatef(0.25f, 0, 0);
-      glu.gluDisk(q, 0, 0.05f, 4, 0);
-      gl.glTranslatef(-0.25f, 0, 0);
-     
-     
-     // glu.gluSphere(q, 0.5f, 15, 15);
-      //
-     // gl.glTranslated(0.5, 0, 0);
-     
-      
-       
 //      gl.glEnable( GL.GL_LIGHTING );  
 //      gl.glEnable( GL.GL_LIGHT0 );  
 //      gl.glEnable( GL.GL_NORMALIZE );  
